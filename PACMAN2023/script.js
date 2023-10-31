@@ -47,6 +47,31 @@ const layout = [
 
 creerPlateau();
 
+document.addEventListener("keyup", (event) =>{
+    console.log("keyup : "+ event.key);
+    let pacmanDiv = document.querySelector(".pacman");
+    let pacManCase = pacmanDiv.dataset.numerocase;
+    switch(event.key){
+        case "ArrowUp" :
+            //déplacer la case contenant pacman de 1 vers le haut
+            break;
+            case "ArrowRight" :
+            //déplacer la case contenant pacman de 1 vers la droite
+                pacmanDiv.classList.remove("pacman");
+                getCaseByIndex(parseInt(pacManCase) + 1).classList.add("pacman");
+            break;
+        case "ArrowLeft" :
+            //déplacer la case contenant pacman de 1 vers la gauche
+            pacmanDiv.classList.remove("pacman");
+            getCaseByIndex(parseInt(pacManCase) - 1).classList.add("pacman");
+        break;
+        case "ArrowDown" :
+            default :
+                break;
+    }
+});
+
+
 function creerPlateau(){
     let cptCase = 0;
     layout.forEach(caseLayout => {
