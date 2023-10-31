@@ -48,9 +48,10 @@ const layout = [
 creerPlateau();
 
 function creerPlateau(){
+    let cptCase = 0;
     layout.forEach(caseLayout => {
         let casePlateau = document.createElement("div");
-
+        casePlateau.dataset.numerocase = cptCase;
         switch(caseLayout){
             case 0 :
                 casePlateau.classList.add("point");
@@ -69,5 +70,14 @@ function creerPlateau(){
         }
 
         gameDiv.appendChild(casePlateau);
-    })
+        cptCase++;
+    });
+
+    getCaseByIndex(489).classList.add("pacman");
+}
+
+function getCaseByIndex(index){
+    let caseGame = document.querySelector("[data-numerocase='"+index+"']");
+    return caseGame;
+
 }

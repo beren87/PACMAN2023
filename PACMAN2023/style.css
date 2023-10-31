@@ -43,3 +43,12 @@ Fantômes
     border: black solid 3px;
     box-sizing: border-box;
 }
+
+#game div.pacman{
+    background-color: #ffee00;
+    border-radius: 50%;
+    border: black solid 1px;
+    box-sizing: border-box;
+}
+
+
