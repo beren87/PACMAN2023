@@ -1,0 +1,45 @@
+/*
+Points à manger
+points de puissance
+murs
+cases vides
+Pacman
+Fantômes
+*/
+
+#game{
+    /* width x 28 */
+    width: 560px;
+    /* height x 28 */
+    height: 560px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: black;
+}
+
+#game div{
+    width: 20px;
+    height: 20px;
+}
+
+#game div.mur{
+    background-color: rgb(0, 98, 255);
+}
+
+#game div.point{
+    background-color: #ff8a00;
+    border-radius: 50%;
+    border: black solid 7px;
+    box-sizing: border-box;
+}
+
+#game div.fantome-area{
+    background-color: gray;
+}
+
+#game div.point-puissance{
+    background-color: #00ff66;
+    border-radius: 50%;
+    border: black solid 3px;
+    box-sizing: border-box;
+}
