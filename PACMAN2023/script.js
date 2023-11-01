@@ -1,4 +1,5 @@
 const gameDiv = document.getElementById("game");
+const sizeCaseWidth = 28;
 /*
 * Créer le plateau
 * Créer notre pacman
@@ -54,6 +55,8 @@ document.addEventListener("keyup", (event) =>{
     switch(event.key){
         case "ArrowUp" :
             //déplacer la case contenant pacman de 1 vers le haut
+            pacmanDiv.classList.remove("pacman");
+            getCaseByIndex(parseInt(pacManCase) - sizeCaseWidth).classList.add("pacman");
             break;
             case "ArrowRight" :
             //déplacer la case contenant pacman de 1 vers la droite
@@ -64,8 +67,11 @@ document.addEventListener("keyup", (event) =>{
             //déplacer la case contenant pacman de 1 vers la gauche
             pacmanDiv.classList.remove("pacman");
             getCaseByIndex(parseInt(pacManCase) - 1).classList.add("pacman");
-        break;
-        case "ArrowDown" :
+            break;
+            case "ArrowDown" :
+            //déplacer la case contenant pacman de 1 vers le bas
+            pacmanDiv.classList.remove("pacman");
+            getCaseByIndex(parseInt(pacManCase) + sizeCaseWidth).classList.add("pacman");
             default :
                 break;
     }
