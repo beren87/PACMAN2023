@@ -49,32 +49,8 @@ const layout = [
 creerPlateau();
 
 document.addEventListener("keyup", (event) =>{
-    console.log("keyup : "+ event.key);
-    let pacmanDiv = document.querySelector(".pacman");
-    let pacManCase = pacmanDiv.dataset.numerocase;
-    switch(event.key){
-        case "ArrowUp" :
-            //déplacer la case contenant pacman de 1 vers le haut
-            pacmanDiv.classList.remove("pacman");
-            getCaseByIndex(parseInt(pacManCase) - sizeCaseWidth).classList.add("pacman");
-            break;
-            case "ArrowRight" :
-            //déplacer la case contenant pacman de 1 vers la droite
-                pacmanDiv.classList.remove("pacman");
-                getCaseByIndex(parseInt(pacManCase) + 1).classList.add("pacman");
-            break;
-        case "ArrowLeft" :
-            //déplacer la case contenant pacman de 1 vers la gauche
-            pacmanDiv.classList.remove("pacman");
-            getCaseByIndex(parseInt(pacManCase) - 1).classList.add("pacman");
-            break;
-            case "ArrowDown" :
-            //déplacer la case contenant pacman de 1 vers le bas
-            pacmanDiv.classList.remove("pacman");
-            getCaseByIndex(parseInt(pacManCase) + sizeCaseWidth).classList.add("pacman");
-            default :
-                break;
-    }
+    deplacerPacman(event.key);
+
 });
 
 
@@ -111,4 +87,32 @@ function getCaseByIndex(index){
     let caseGame = document.querySelector("[data-numerocase='"+index+"']");
     return caseGame;
 
+}
+
+function deplacerPacman(direction) {
+    let pacmanDiv = document.querySelector(".pacman");
+    let pacManCase = pacmanDiv.dataset.numerocase;
+    switch(direction){
+        case "ArrowUp" :
+            //déplacer la case contenant pacman de 1 vers le haut
+            pacmanDiv.classList.remove("pacman");
+            getCaseByIndex(parseInt(pacManCase) - sizeCaseWidth).classList.add("pacman");
+            break;
+            case "ArrowRight" :
+            //déplacer la case contenant pacman de 1 vers la droite
+                pacmanDiv.classList.remove("pacman");
+                getCaseByIndex(parseInt(pacManCase) + 1).classList.add("pacman");
+            break;
+        case "ArrowLeft" :
+            //déplacer la case contenant pacman de 1 vers la gauche
+            pacmanDiv.classList.remove("pacman");
+            getCaseByIndex(parseInt(pacManCase) - 1).classList.add("pacman");
+            break;
+            case "ArrowDown" :
+            //déplacer la case contenant pacman de 1 vers le bas
+            pacmanDiv.classList.remove("pacman");
+            getCaseByIndex(parseInt(pacManCase) + sizeCaseWidth).classList.add("pacman");
+            default :
+                break;
+    }
 }
