@@ -7,6 +7,10 @@ Pacman
 Fantômes
 */
 
+body, html{
+    background-color: black;
+}
+
 #game{
     /* width x 28 */
     width: 560px;
@@ -15,6 +19,7 @@ Fantômes
     display: flex;
     flex-wrap: wrap;
     background-color: black;
+    margin: auto;
 }
 
 #game div{

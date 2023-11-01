@@ -1,10 +1,10 @@
 const gameDiv = document.getElementById("game");
 const sizeCaseWidth = 28;
 /*
-* Créer le plateau
-* Créer notre pacman
-* Gérer ses déplacements (sans contrainte)
-* Contrainte de déplacements (pas dans les murs)
+* Créer le plateau ✓
+* Créer notre pacman ✓
+* Gérer ses déplacements (sans contrainte) ✓
+* Contrainte de déplacements (pas dans les murs) ✓
 * Pièces à manger
 * Gérer les fantômes
 ...
@@ -92,27 +92,41 @@ function getCaseByIndex(index){
 function deplacerPacman(direction) {
     let pacmanDiv = document.querySelector(".pacman");
     let pacManCase = pacmanDiv.dataset.numerocase;
+    let caseDestination = null;
     switch(direction){
         case "ArrowUp" :
             //déplacer la case contenant pacman de 1 vers le haut
-            pacmanDiv.classList.remove("pacman");
-            getCaseByIndex(parseInt(pacManCase) - sizeCaseWidth).classList.add("pacman");
+            caseDestination = getCaseByIndex(parseInt(pacManCase) - sizeCaseWidth)
             break;
             case "ArrowRight" :
             //déplacer la case contenant pacman de 1 vers la droite
-                pacmanDiv.classList.remove("pacman");
-                getCaseByIndex(parseInt(pacManCase) + 1).classList.add("pacman");
+            caseDestination = getCaseByIndex(parseInt(pacManCase) + 1);
             break;
         case "ArrowLeft" :
             //déplacer la case contenant pacman de 1 vers la gauche
-            pacmanDiv.classList.remove("pacman");
-            getCaseByIndex(parseInt(pacManCase) - 1).classList.add("pacman");
+            caseDestination = getCaseByIndex(parseInt(pacManCase) - 1);
             break;
             case "ArrowDown" :
             //déplacer la case contenant pacman de 1 vers le bas
-            pacmanDiv.classList.remove("pacman");
-            getCaseByIndex(parseInt(pacManCase) + sizeCaseWidth).classList.add("pacman");
+            caseDestination = getCaseByIndex(parseInt(pacManCase) + sizeCaseWidth);
             default :
                 break;
+    };
+    if(caseDestination != null){
+        if(checkDirection(caseDestination)){
+            pacmanDiv.classList.remove("pacman");
+            caseDestination.classList.add("pacman");
+        }
+    }
+}
+
+// return faux si je peux pas aller là où je veux
+// return vrai si je peux
+function checkDirection(caseDestination){
+    if(caseDestination.classList.contains("mur")){
+        return false;
+    }
+    else{
+        return true;
     }
 }
